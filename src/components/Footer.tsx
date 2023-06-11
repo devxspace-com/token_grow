@@ -42,7 +42,7 @@ export default function Footer() {
         </section>
         {/* copyright */}
         <section className='text-[#FFFFFF] mt-[50px] flex gap-2 items-center justify-center pb-[60px]'>
-            <p className="font-[500] text-[12px] leading-4 tracking-[0.03em] ">2023</p>
+            <p className="font-[500] text-[12px] leading-4 tracking-[0.03em] ">&copy; 2023</p>
             <p className="font-[500] text-[12px] leading-4 tracking-[0.03em] ">GROWTOKEN</p>
             <p className="font-[500] text-[12px] leading-4 tracking-[0.03em] ">All Rights Reserved</p>
         </section>
