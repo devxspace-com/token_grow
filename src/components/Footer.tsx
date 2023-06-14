@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="">
         <h2 className="text-[28px] leading-5 font-bold text-[#FFFF] logo ">Grow<span className="text-[#F18500]">Token</span></h2>
         </div>
-        <div className="flex gap-8 mobile:justify-between">
+        <div className="flex gap-8 mobile:flex-col mobile:gap-4">
         <div className="flex flex-col">
             <Link href="/" className='font-[500] text-[16px] leading-[21px] tracking-[0.03em]'>Impact</Link>
             <Link href="/" className='font-[500] text-[16px] leading-[21px] tracking-[0.03em] mt-[20px]'>News</Link>
@@ -24,7 +24,7 @@ export default function Footer() {
         </div>
         </div>
         
-        <div className="flex gap-4 items-end mobile:justify-between">
+        <div className="flex gap-4 items-end mobile:mx-auto">
             <Link href="/">
                 <img src="./svg/Vector.svg" alt="" className='w-[20px] h-[20px]' />
             </Link>

@@ -3,7 +3,7 @@ import React from 'react'
 export default function ServicesFeatures() {
   return (
     <main>
-        <section className="mt-[250px]">
+        <section className="mt-[250px] mobile:mt-[50px]">
             <h5 className="font-[700] text-[#FFFFFF] text-[24px] leading-8 tracking-[0,03em] ml-[70px] headingTag tabletAir:ml-[42px] mobile:w-[90%] mobile:mx-auto">Our Services</h5>
 
             <section className=" flex mt-[24px] w-[80%] mx-auto justify-between smDesktop:w-[90%] tabletAir:flex-wrap">
@@ -42,13 +42,13 @@ export default function ServicesFeatures() {
             </section>
         </section>
 
-        <section className="w-[35%] lgDesktop:w-[40%] smDesktop:w-[50%] tabletAir:w-[70%] mobile:w-[90%] mx-auto mt-[86px] flex gap-4">
-            <div className="w-[361px] mobile:w-[200px]">
+        <section className="w-[35%] lgDesktop:w-[40%] smDesktop:w-[50%] tabletAir:w-[70%] mobile:w-[90%] mx-auto mt-[86px] flex gap-4 mobile:flex-col">
+            <div className="w-[361px] mobile:w-[90%] mobile:mx-auto mobile:text-center">
                 <h6 className="font-[500] text-[20px] mobile:text-[16px] leading-[26px] tracking-[0.03em] text-[#FFFFFF]">
                 HOW TO INVEST IN AGRICULTURE ON GROWTOKEN PLATFORM
                 </h6>
             </div>
-            <div className="flex gap-1 relative z-[1] items-center">
+            <div className="flex gap-1 relative z-[1] items-center mobile:justify-center">
                 <p className="text-[16px] leading-5 font-[500] tracking-[0.03em] text-[#F18500] ">Learn more</p>
                 <img src="./icon/Vector.png" alt="" className="w-[12px] h-[14px]" />
             </div>

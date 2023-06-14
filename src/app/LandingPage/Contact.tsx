@@ -48,14 +48,14 @@ export default function Contact() {
                 </p>
               </div>
 
-              <div className="mt-4">
+              <div className="mt-4 mobile:w-[50%] mobile:mx-auto">
               <label
                   htmlFor=""
-                  className="text-[16px] font-[500] leading-[21px] tracking-[0.03em] text-[#FFFFFF] mb-3"
+                  className="text-[16px] font-[500] leading-[21px] tracking-[0.03em] text-[#FFFFFF] mb-3 "
                 >
                   Verification
                 </label>
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-center ">
                     <input type="checkbox" name="" id="" className="border-[1px] bg-[transparent] w-6 h-6" />
                     <p className="font-[400] text-[16px] leading-[21px] tracking-[0.03em] text-[#FFFFFF]">I’m not a robot</p>
                 </div>
