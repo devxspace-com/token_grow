@@ -74,8 +74,8 @@ export default function Contact() {
                 <textarea
                   name=""
                   id=""
-                  cols="30"
-                  rows="4"
+                  cols={30}
+                  rows={4}
                   placeholder="Write text here..."
                   className="bg-[transparent] outline-none text-[#FFFFFF] border-[1px] rounded-lg"
                 />
