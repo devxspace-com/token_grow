@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+// import img from "next/img";
 
 interface props {
   pathname: string | null;
@@ -15,7 +16,7 @@ export default function Sidebar() {
     {
       href: "/dashboard",
       name: "Home",
-      icon: <img src="./menuIcon/Vector.svg" alt="" className="" />,
+      icon: <img src="./menuIcon/Vector.svg" alt="" className="" width={12} />,
       iconActive: <img src="./menuIcon/Vector (1).svg" alt="" />,
     },
     {

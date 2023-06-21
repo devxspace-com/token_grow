@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import Image from "next/image";
 
 export default function Features() {
   return (
@@ -11,7 +12,7 @@ export default function Features() {
         </h5>
         <section className="">
           <div className="relative">
-            <img
+            <Image
               src="./image8.png"
               alt=""
               className="w-[860px] h-[600px] tabletAir:w-[100%] mobile:h-[550px] mx-auto relative"
@@ -19,7 +20,7 @@ export default function Features() {
           </div>
           <section className="absolute top-[100px] w-[860px] left-[330px] lgDesktop:left-[210px] smDesktop:left-[80px] smDesk:left-[30px] flex gap-[60px] tabletAir:w-[100%] tabletAir:left-0 mobile:flex-col mobile:top-[90px] mobile:gap-[20px]">
             <div className="flex gap-2">
-              <img
+              <Image
                 src="./icon/secure icon.png"
                 alt=""
                 className="w-[60px] h-[60px]"
@@ -36,7 +37,7 @@ export default function Features() {
               </div>
             </div>
             <div className="flex gap-2">
-              <img
+              <Image
                 src="./icon/secure icon (1).png"
                 alt=""
                 className="w-[60px] h-[60px]"
@@ -55,7 +56,7 @@ export default function Features() {
           </section>
           <section className="absolute bottom-[80px] w-[860px] left-[330px] lgDesktop:left-[210px] smDesktop:left-[80px] smDesk:left-[30px] flex gap-[60px] tabletAir:w-[100%] tabletAir:left-0 mobile:flex-col mobile:bottom-[20px] mobile:gap-[20px]">
             <div className="flex gap-2">
-              <img
+              <Image
                 src="./icon/Frame 62.png"
                 alt=""
                 className="w-[60px] h-[60px]"
@@ -72,7 +73,7 @@ export default function Features() {
               </div>
             </div>
             <div className="flex gap-2">
-              <img
+              <Image
                 src="./icon/secure icon (2).png"
                 alt=""
                 className="w-[60px] h-[60px]"
