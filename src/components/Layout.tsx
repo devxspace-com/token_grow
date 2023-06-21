@@ -13,7 +13,7 @@ export default function Layout({ children }: Props) {
         <div className="w-[16%]">
           <Sidebar />
         </div>
-        <div className="w-[84%]">{children}</div>
+        <div className="w-[84%] bg-[#ccccff] overflow-y-scroll max-h-screen h-screen min-h-screen">{children}</div>
       </section>
     </main>
   );

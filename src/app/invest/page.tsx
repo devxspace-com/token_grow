@@ -2,7 +2,8 @@ import Layout from '@/components/Layout'
 import React from 'react'
 import search from '../../../public/icon/search.svg'
 import Image from 'next/image'
-import Invest3 from './invest3'
+import Invest3 from './features/invest3'
+import ActiveInvestment from './features/ActiveInvestment'
 
 export default function Invest() {
   return (
@@ -20,6 +21,7 @@ export default function Invest() {
 
     </div>
     </div>
+  <ActiveInvestment/>
     </Layout>
   )
 }

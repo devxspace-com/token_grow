@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import back from "../../../public/icon/back.svg";
 import Image from "next/image";
-import Review from "./review";
-import Product from "./product";
-import Submit from "./submit";
+import Review from "../components/review";
+import Product from "../components/product";
+import Submit from "../components/submit";
 
 type ProductData = {
   expectedReturns: string;

@@ -7,14 +7,14 @@ type ReviewProps = {
 
 const Review = ({ onBack, price }: ReviewProps) => {
   const [investedPrice, setInvestedPrice] = useState<number | undefined>(undefined);
-//   console.log(investedPrice)
+
 
   const handleContinue = () => {
-    // Validate input and perform any necessary checks before proceeding
+    
     setInvestedPrice(price);
     onBack(investedPrice);
 
-    // Pass the product information to the next component or perform any desired action
+    
   };
 
   return (
