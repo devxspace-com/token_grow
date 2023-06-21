@@ -22,9 +22,9 @@ export default function AllNotifications() {
   return (
     <div>
         {
-            details.map((detail)=>(
+            details.map((detail, index)=>(
 
-                <SingleNotification title={detail.title} details={detail.details} date={detail.date}/>
+                <SingleNotification id={index} title={detail.title} details={detail.details} date={detail.date}/>
             ))
         }
     </div>

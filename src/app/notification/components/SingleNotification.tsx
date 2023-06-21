@@ -6,7 +6,7 @@ export default function SingleNotification(props:any) {
     const [openMore, setOpenMore] = useState(false)
   return (
     <main>
-        <section className={openMore ?"w-[90%] bg-[#000019] mx-auto text-[#FFFFFF] rounded-lg mb-4": "w-[90%] bg-[#000019] mx-auto text-[#AAA7A7] rounded-lg mb-4"}>
+        <section key={props.id} className={openMore ?"w-[90%] bg-[#000019] mx-auto text-[#FFFFFF] rounded-lg mb-4": "w-[90%] bg-[#000019] mx-auto text-[#AAA7A7] rounded-lg mb-4"}>
             <div className="w-[96%] py-[44px] pl-[20px]">
 
             <div className="flex justify-between ">
