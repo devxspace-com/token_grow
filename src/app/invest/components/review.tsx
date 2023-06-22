@@ -18,14 +18,14 @@ const Review = ({ onBack, price }: ReviewProps) => {
   };
 
   return (
-    <div>
-      <div className="rounded-lg bg-[#000019] w-[98%] mt-5 m-auto flex p-10">
-        <div className="text-white w-[40%] m-auto">
+    
+      <div className="rounded-lg bg-[#000019] w-[98%] mt-5 m-auto flex p-10 text-white min-h-[80vh]">
+        <div className="text-white w-[60%] m-auto flex mr-48">
           <h1 className="text-4xl">
             How much would you like to invest in this?
           </h1>
         </div>
-        <div className="flex flex-col text-white">
+        <div className="flex flex-col text-white m-auto w-[60%]">
           <div className="form border border-orange-400 relative flex justify-normal mb-4">
             <p className="absolute -top-[1em] bg-[#000019] left-1 text-[0.7em] text-white">
               Amount in Tether USDT
@@ -34,7 +34,7 @@ const Review = ({ onBack, price }: ReviewProps) => {
               type="number"
               name="number"
               id="number"
-              className="border-none text-white p-3 active:border-none focus:border-none outline-none bg-transparent"
+              className="border-none text-white p-3 active:border-none w-full focus:border-none outline-none bg-transparent"
               onChange={(e) => setInvestedPrice(Number(e.target.value))}
             />
           </div>
@@ -43,7 +43,7 @@ const Review = ({ onBack, price }: ReviewProps) => {
 
           <div className="mt-8">
             <button
-              className="bg-[#F18500] float-right items-end justify-end px-3 flex flex-grow rounded-xl"
+              className="bg-[#F18500] float-right items-end justify-end px-4 py-2 flex flex-grow rounded-xl"
               onClick={handleContinue}
             >
               Continue
@@ -51,7 +51,6 @@ const Review = ({ onBack, price }: ReviewProps) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

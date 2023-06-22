@@ -49,7 +49,7 @@ const Product = ({ onInvest }: ProductProps) => {
           </div>
           <div className="button ml-[3em]">
             <button
-              className="bg-[#F18500] px-3 rounded-xl"
+              className="bg-[#F18500] px-4 py-2 rounded-xl"
               onClick={handleInvest}
             >
               Invest
