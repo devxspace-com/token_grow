@@ -2,7 +2,7 @@ import Layout from '@/components/Layout'
 import React from 'react'
 import search from '../../../public/icon/search.svg'
 import Image from 'next/image'
-import Invest3 from './features/invest3'
+// import Invest3 from './buyInvestment/page'
 import ActiveInvestment from './features/ActiveInvestment'
 
 export default function Invest() {
@@ -16,10 +16,10 @@ export default function Invest() {
         </div>
       </div>
 
-  <div className='flex'>
+  {/* <div className='flex'>
       <Invest3 />
 
-    </div>
+    </div> */}
     </div>
   <ActiveInvestment/>
     </Layout>

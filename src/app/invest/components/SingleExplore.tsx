@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 export default function SingleExplore() {
@@ -23,7 +24,7 @@ export default function SingleExplore() {
                     </div>
                    
                 </div>
-                    <button className="text-[16px] font-[500] leading-5 tracking-[0.03em] w-[72px] h-[24px] rounded-lg mt-[22px] bg-[#F18500] text-[#FFFFFF]">Invest</button>
+                    <Link href="/invest/buyInvestment" className="text-[16px] font-[500] leading-5 tracking-[0.03em] w-[72px] h-[24px] rounded-lg mt-[22px] bg-[#F18500] text-[#FFFFFF] text-center">Invest</Link>
             </div>
         </div>
     </section>

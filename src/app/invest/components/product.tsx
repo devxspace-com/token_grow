@@ -27,7 +27,9 @@ const Product = ({ onInvest }: ProductProps) => {
     <div>
       <div className="rounded-lg contact_bg w-[98%] mt-5 m-auto flex flex-col p-5">
         <div className="flex top text-white m-auto w-[90%] items-start ">
-          <div className="profile rounded-full h-[8em] w-[8em] bg-white"></div>
+          <div className="profile">
+            <img src="../Frame 227.png" alt="" className="rounded-full h-[8em] w-[8em]"/>
+          </div>
           <div className="text flex flex-col ml-4">
             <h1 className="text-[1.5em]">{productValues.name}</h1>
             <p className="text-[0.8em]">
