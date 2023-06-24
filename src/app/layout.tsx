@@ -5,10 +5,10 @@ import '@rainbow-me/rainbowkit/styles.css';
 import {
   getDefaultWallets,
   RainbowKitProvider,
-  Chain
+  // Chain
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { Chain } from 'wagmi/chains';
+import { fantomTestnet, fantom } from 'wagmi/chains';
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 // import { alchemyProvider } from 'wagmi/providers/alchemy';
 // import { publicProvider } from 'wagmi/providers/public';
@@ -18,37 +18,39 @@ import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 // import { Chain } from 'wagmi/chains';
 // import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
-const HederaChain: Chain = {
-  id: 0x12a,
-  name: 'Hedera Testnet',
-  network: 'Hedra',
-  iconUrl: 'https://example.com/icon.svg',
-  iconBackground: '#fff',
-  nativeCurrency: {
-    decimals: 18,
-    name: 'HBAR',
-    symbol: 'HBAR',
-  },
-  rpcUrls: {
-    default: {
-      http: ["https://testnet.hashio.io/api"],
-    },
-  },
-  // blockExplorers: {
-  //   default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
-  //   etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' },
-  // },
-  testnet: true,
-};
+// const HederaChain: Chain = {
+//   id: 0x12a,
+//   name: 'Hedera Testnet',
+//   network: 'Hedra',
+//   iconUrl: 'https://example.com/icon.svg',
+//   iconBackground: '#fff',
+//   nativeCurrency: {
+//     decimals: 18,
+//     name: 'HBAR',
+//     symbol: 'HBAR',
+//   },
+//   rpcUrls: {
+//     default: {
+//       http: [""],
+//     },
+//   },
+//   // blockExplorers: {
+//   //   default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+//   //   etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+//   // },
+//   testnet: true,
+// };
+// https://ftm.getblock.io/&lt;api_key&gt;/testnet/
 
-
-
+// PK411C6A5QX7VP2DFT5JHVMEHR7XR7IWG6 API key for testnet
 
 const { chains, publicClient } = configureChains(
-  [HederaChain],
+  [ fantomTestnet],
   [
     jsonRpcProvider({
-      rpc: chain => ({ http: chain.rpcUrls.default.http[0] })
+      rpc: chain => ({ 
+        http: `https://ftm.getblock.io/ebd5c137-ed80-43e4-805b-cd805544ad07/testnet/`
+      })
     }),
   ]
 );
