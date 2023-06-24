@@ -36,21 +36,23 @@ const Submit = ({ product, investedPrice }: SubmitProps) => {
         <h1 className="text-[3em]">Review Investment Plan</h1>
       </div>
 
-      <div className="flex flex-col text-white m-auto w-full">
-        <h1>{product.name}</h1>
-        <p className="text-[0.8em]">
+      <div className="flex flex-col text-white m-auto w-[90%] items-center justify-center">
+      <div className="flex flex-col w-full ">
+        <h1 className="text-[1.2em]">{product.name}</h1>
+        <p className="text-[0.9em]">
           <span className="text-green-700">{product.expectedReturns}</span> in {product.farmingCycleType}
         </p>
-        {investedPrice && (
-          <div>
-            <p>Amount: {investedPrice} USDT</p>
-            <p>Processing Fee (2%): {serviceFee.toFixed(2)} USDT</p>
-            <p>Units: {units}</p>
-            <p>Total: {investedPrice + serviceFee} USDT</p>
+        </div>
+        
+          <div className="flex flex-col w-full">
+           <div className="flex mt-6 justify-between w-full "> <p>Amount: </p> <p>{investedPrice} USDT</p></div>
+            <div className="flex mt-6 justify-between w-full "><p>Processing Fee (2%): </p> <p>{serviceFee.toFixed(2)} USDT</p></div>
+            <div className="flex mt-6 justify-between w-full "><p>Units: </p> <p>{units} units</p></div>
+            <div className="flex mt-6 justify-between w-full "><p>Total: </p> <p>{investedPrice ? investedPrice + serviceFee : 0} USDT</p></div>
           </div>
-        )}
-      <div className="mt-8">
-        <button className="bg-[#F18500] float-right items-end justify-end px-3 flex flex-grow rounded-xl">
+      
+      <div className="mt-8 w-full">
+        <button className="bg-[#F18500] float-right items-end justify-end px-6 py-3 flex flex-grow rounded-xl">
           Confirm
         </button>
       </div>
