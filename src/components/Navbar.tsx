@@ -8,7 +8,7 @@ import { useState } from "react";
 import { Web3Provider } from "@ethersproject/providers";
 import walletConnectFcn from "@/hedera/walletConnect";
 
-type WalletData = [string, ethers.BrowserProvider, string];
+type WalletData = [string, ethers.providers.JsonRpcProvider, string];
 
 export default function Navbar() {
   const [walletData, setWalletData] = useState<WalletData | undefined>(

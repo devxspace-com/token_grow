@@ -1,6 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { ethers } from 'ethers';
+import contractABI from '../../../abi/tokenGrow.json';
+
+const contractAddress = '0x0000000000000000000000000000000000e4710f'; 
 
 export default function SingleActiveInvestment() {
+  const [investmentData, setInvestmentData] = useState(null);
+
+
+  useEffect(() => {
+    const loadInvestmentData = async () => {
+      try {
+        if (typeof window.ethereum !== 'undefined' && typeof window.ethereum.request !== 'undefined') {
+          await window.ethereum.request({ method: 'eth_requestAccounts' });
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          const signer = provider.getSigner();
+          const contract = new ethers.Contract(contractAddress, contractABI, signer);
+
+          const result = await contract.getAllInvestment();
+          setInvestmentData(result);
+        } else {
+          console.error('Ethereum provider or request method not available');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    loadInvestmentData();
+  }, []);
+
+
   return (
     <section>
         <section className="w-[90%] mx-auto bg-[#000019] rounded-lg text-[#FFFFFF] mb-[8px]">

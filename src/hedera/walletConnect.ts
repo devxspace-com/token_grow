@@ -6,27 +6,29 @@ interface NativeCurrency {
   decimals: number;
 }
 
-// interface EthereumChainParams {
-//   chainName: string;
-//   chainId: string;
-//   nativeCurrency: NativeCurrency;
-//   rpcUrls: string[];
-//   blockExplorerUrls: string[];
-// }
+interface EthereumChainParams {
+  chainName: string;
+  chainId: string;
+  nativeCurrency: NativeCurrency;
+  rpcUrls: string[];
+  blockExplorerUrls: string[];
+}
 
 declare global {
   interface Window {
-    ethereum?: ethers.JsonRpcProvider;
+    ethereum?: ethers.providers.ExternalProvider & {
+      request?: (request: { method: string; params?: any[] | Record<string, any> }) => Promise<any>;
+    };
   }
 }
 
 const network = "testnet";
 
-async function walletConnectFcn(): Promise<[string,  ethers.BrowserProvider, string]> {
+async function walletConnectFcn(): Promise<[string, ethers.providers.JsonRpcProvider, string]> {
   console.log(`\n=======================================`);
 
   // ETHERS PROVIDER
-  const provider = new ethers.BrowserProvider(window.ethereum as ethers.JsonRpcProvider & {
+  const provider = new ethers.providers.Web3Provider(window.ethereum as ethers.providers.ExternalProvider & {
     request: (request: { method: string; params?: any[] | Record<string, any> }) => Promise<any>;
   });
 
@@ -59,7 +61,7 @@ async function walletConnectFcn(): Promise<[string,  ethers.BrowserProvider, str
   console.log("- Connecting wallet...🟠");
   let selectedAccount: string;
   try {
-    const accounts = await provider.send("eth_requestAccounts", []);
+    const accounts = await provider.send('eth_requestAccounts', []);
     selectedAccount = accounts[0];
     console.log(`- Selected account: ${selectedAccount} ✅`);
   } catch (connectError: unknown) {
