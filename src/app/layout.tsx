@@ -32,6 +32,7 @@ const HederaChain: Chain = {
   rpcUrls: {
     default: {
       http: ["https://testnet.hashio.io/api"],
+      // http: ["pool.arkhia.io/hedera/testnet/json-rpc/v1"],
     },
   },
   // blockExplorers: {
