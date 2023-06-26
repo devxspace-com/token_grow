@@ -6,10 +6,13 @@ import SingleExplore from "./SingleExplore";
 export default function ActiveExplore() {
   const {data, isLoading, isError} = useGetInvestment();
 
-  const combinedData = data[0].map((_:any, index:any) =>
-  data.map((arr:any) => arr[index])
-);
+//   const combinedData:any =  data[0].map((_:any, index:any) =>
+//   data.map((arr:any) => arr[index])
+// );
 
+const combinedData: unknown[][] = (data as unknown[][])?.[0]?.map((_, index) =>
+  (data as unknown[][]).map((arr) => arr[index])
+) || [];
 
   console.log(combinedData)
 
