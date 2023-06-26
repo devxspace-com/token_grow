@@ -1,0 +1,24 @@
+{
+    "title": "Garri Processing Investment",
+    "type": "object",
+    "properties": {
+        
+        "description": {
+            "type": "string",
+            "description": "Capital and Profit is paid at maturity"
+        },
+        "farm":{
+            "type": "string",
+            "description": "ijebu, Ogun State"
+        },
+        "image": {
+            "type": "string",
+            "description": "bafkreihp5nk7jmmgkxlard2auxdktxb4ns5hsnncba54tmdmjso3ktlhgu"
+        },
+    
+        "insurance": {
+            "type": "string",
+            "description": "Leadway insurance"
+        }
+    }
+}

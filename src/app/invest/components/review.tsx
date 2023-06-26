@@ -39,7 +39,7 @@ const Review = ({ onBack, price }: ReviewProps) => {
             />
           </div>
           <p>The Tether amount specified is converted to units</p>
-          <p>5000 USDT = 10 Units (500 USDT = 1 Unit)</p>
+          <p>1 USDT = 1 Units</p>
 
           <div className="mt-8">
             <button
