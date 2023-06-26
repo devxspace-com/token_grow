@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import contractABI from '../../../abi/tokenGrow.json';
@@ -16,6 +17,7 @@ export default function SingleActiveInvestment() {
           const provider = new ethers.providers.Web3Provider(window.ethereum);
           const signer = provider.getSigner();
           const contract = new ethers.Contract(contractAddress, contractABI, signer);
+          console.log('contrac: ', contract)
 
           const result = await contract.getAllInvestment();
           setInvestmentData(result);
