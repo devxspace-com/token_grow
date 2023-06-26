@@ -53,6 +53,8 @@ const Submit = ({ product, investedPrice }: SubmitProps) => {
     args:[address, TokenGrowAddr]
   })
 
+  // console.log("read",Number(readAllow));
+  
 
   const handleSubmit = ()=>{
     if( Number(readAllow) >= amount){

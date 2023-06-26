@@ -26,7 +26,7 @@ const combinedData: unknown[][] = (data as unknown[][])?.[0]?.map((_, index) =>
        combinedData.map((values:any, index:Number)=> (
       
           
-          <SingleExplore id={index} percent={Number(values[2])} time={Number(values[6])} tokenId={Number(values[1])} uriId={Number(values[0])}/>
+          <SingleExplore id={Number(values[0])} percent={Number(values[2])} time={Number(values[6])} tokenId={Number(values[1])} uriId={Number(values[0])} investor={Number(values[5])}/>
          
 
         

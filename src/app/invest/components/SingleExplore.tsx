@@ -14,10 +14,13 @@ export default function SingleExplore(props:any) {
   const diffInMonths = (timestamp - currentDate.getTime()) / (1000 * 60 * 60 * 24 * 30);
 
   const {data} = useReadUri(props.tokenId)
+  
   const {data:fetchD, isLoading, isError} = useFetchURiDetails(data as string);
 
-  console.log(fetchD);
-  console.log('prop', fetchD?.properties?.image?.description);
+  console.log('gg',fetchD);
+//   console.log('prop', fetchD?.properties?.image?.description);
+  
+  console.log('uri',data);
   
  
   
@@ -40,7 +43,7 @@ export default function SingleExplore(props:any) {
                         <p className="text-[12px] leading-4 tracking-[0.03em] mt-[4px]">per units</p>
                     </div>
                     <div className="">
-                        <h2 className="text-[16px] font-[400] leading-6 tracking-[0.03em]">1000</h2>
+                        <h2 className="text-[16px] font-[400] leading-6 tracking-[0.03em]">{props.investor}</h2>
                         <p className="text-[12px] leading-4 tracking-[0.03em] mt-[4px]">Investors</p>
                     </div>
                    
