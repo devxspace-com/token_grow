@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useGetSingleInvestment from "../hooks/useGetSingleInvestment";
 import { useParams } from "next/navigation";
 import { log } from "console";

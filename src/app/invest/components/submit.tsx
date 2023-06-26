@@ -38,7 +38,7 @@ const Submit = ({ product, investedPrice }: SubmitProps) => {
     address:TokenGrowAddr,
     abi:tokenGrow,
     functionName: 'buyAnInvestment',
-    args: [amount, Number(data[1]),address]
+    args: [amount, Number((data as unknown [])?.[1]),address]
   })
   const {write:ApproveT} =useContractWrite({
     address:Token,
@@ -55,7 +55,7 @@ const Submit = ({ product, investedPrice }: SubmitProps) => {
 
 
   const handleSubmit = ()=>{
-    if( readAllow >= amount){
+    if( Number(readAllow) >= amount){
 
       write()
     }
@@ -112,7 +112,7 @@ const Submit = ({ product, investedPrice }: SubmitProps) => {
 
           <div  className="mt-8 w-full">
           {
-            readAllow >= amount ?
+            Number(readAllow) >= amount ?
             <button onClick={handleSubmit} className="bg-[#F18500] float-right items-end justify-end px-6 py-3 flex flex-grow rounded-xl">
               Confirm
             </button>
