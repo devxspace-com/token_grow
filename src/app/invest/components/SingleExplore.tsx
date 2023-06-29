@@ -14,10 +14,15 @@ export default function SingleExplore(props:any) {
   const diffInMonths = (timestamp - currentDate.getTime()) / (1000 * 60 * 60 * 24 * 30);
 
   const {data} = useReadUri(props.tokenId)
+
+  
+  console.log('dataArray','dataArray');
+  console.log('props.tokenId',props.tokenId);
+  console.log('data',data);
   
   const {data:fetchD, isLoading, isError} = useFetchURiDetails(data as string);
 
-  console.log('gg',fetchD);
+  console.log('fetchD',fetchD);
 //   console.log('prop', fetchD?.properties?.image?.description);
   
   console.log('uri',data);
@@ -29,7 +34,7 @@ export default function SingleExplore(props:any) {
     <section key={props.id}>
         <div className="py-[32px] pl-[20px] flex gap-[36px] bg-[#FFFFFF] rounded-xl w-[50%] mb-[8px]">
         
-            <img src={`https://${fetchD?.properties?.image?.description}.ipfs.nftstorage.link`} alt="item name" className="w-[200px] h-[200px] rounded-xl" />
+            <img src={props.im} alt="item name" className="w-[200px] h-[200px] rounded-xl" />
 
             <div className="flex flex-col">
                 <h2 className="text-[20px] leading-7 tracking-[0.03em] font-semibold">{fetchD?.title}</h2>
