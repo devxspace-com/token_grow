@@ -1,6 +1,6 @@
 /** @format */
 
-export const TokenGrowAddr = "0x7050dC062b9387A0764FB54eB1A7C4eC81C62371";
+export const TokenGrowAddr = "0x9fa12a7729964B15B3D5971bC87b758598e176f9";
 
 export const NFTAddr = "0xfb6948aBa275D242a8247dCb4B96181ceE016768";
 
