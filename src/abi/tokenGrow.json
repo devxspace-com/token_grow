@@ -40,6 +40,25 @@
       {
         "indexed": true,
         "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
         "name": "from",
         "type": "address"
       },
@@ -171,6 +190,19 @@
   },
   {
     "inputs": [
+      { "internalType": "uint256", "name": "_investmentId", "type": "uint256" },
+      { "internalType": "address", "name": "_address", "type": "address" }
+    ],
+    "name": "getProfitWithTime",
+    "outputs": [
+      { "internalType": "uint256", "name": "income", "type": "uint256" },
+      { "internalType": "uint256", "name": "start", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
       { "internalType": "address", "name": "_address", "type": "address" }
     ],
     "name": "getYourInvestment",
@@ -247,6 +279,25 @@
   },
   {
     "inputs": [
+      { "internalType": "address", "name": "", "type": "address" },
+      { "internalType": "address", "name": "", "type": "address" },
+      { "internalType": "uint256", "name": "", "type": "uint256" },
+      { "internalType": "bytes", "name": "", "type": "bytes" }
+    ],
+    "name": "onERC721Received",
+    "outputs": [{ "internalType": "bytes4", "name": "", "type": "bytes4" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
       { "internalType": "uint256", "name": "_investmentId", "type": "uint256" },
       {
         "internalType": "address",
@@ -260,6 +311,20 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "processingFee",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [
       { "internalType": "uint256", "name": "_investmentId", "type": "uint256" },
       {
@@ -270,6 +335,15 @@
       { "internalType": "uint256", "name": "_amount", "type": "uint256" }
     ],
     "name": "returnFundWithInterest",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_fee", "type": "uint256" }
+    ],
+    "name": "setProcessingFee",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -327,6 +401,15 @@
     ],
     "name": "transferFrom",
     "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newOwner", "type": "address" }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },

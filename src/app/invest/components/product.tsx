@@ -1,47 +1,60 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import useGetSingleInvestment from "../hooks/useGetSingleInvestment";
+import { useParams } from "next/navigation";
+import { log } from "console";
+import useReadUri from "../hooks/useReadUri";
+import useFetchURiDetails from "../hooks/useFetchURiDetails";
 
 type ProductProps = {
-  onInvest: (product: any) => void;
+  invest: (product: any) => void;
 };
 
-const Product = ({ onInvest }: ProductProps) => {
-  const [productValues, setProductValues] = useState<any>({
-    expectedReturns: "20%",
-    investmentType: "Fixed Income",
-    offerClosingDate: "tbd",
-    maturityDate: "tbd",
-    payoutType: "Capital + Profit is paid at maturity",
-    unitType: "Units can be sold anytime to others",
-    insurancePartner: "Leadway Insurance",
-    farmingCycleType: "6 months",
-    farmLocation: "Ijebu, Ogun State",
-    name: 'Garri Processing Investment',
-  });
+const Product = ({invest}:ProductProps) => {
+  const {id} = useParams();
+  
+  const {data, isLoading, isError} = useGetSingleInvestment(Number(id));
 
-  const handleInvest = () => {
-    // Pass the product values to the onInvest function
-    onInvest(productValues);
-  };
+  const {data:readNFT} = useReadUri(Number((data as unknown[])?.[2]))
+
+console.log(data);
+console.log('a',readNFT);
+// console.log('hel',Number(data[2]));
+
+
+const {data:fetchURI, isLoading:fetchLoading, isError:fetchIsError} = useFetchURiDetails(readNFT as string);
+console.log('nft', fetchURI);
+
+const currentDate = new Date();
+const timestamp = Number((data as unknown[])?.[8]) * 1000;
+const diffInMonths = (timestamp -currentDate.getTime()) / (1000 *60*60 * 24 *30);
+const date = new Date(Number((data as unknown[])?.[7]) * 1000).toLocaleDateString();
+
+
+
+  // const handleInvest = () => {
+  //   // Pass the product values to the onInvest function
+  //   onInvest();
+  // };
 
   return (
     <div>
       <div className="rounded-lg contact_bg w-[98%] mt-5 m-auto flex flex-col p-5">
         <div className="flex top text-white m-auto w-[90%] items-start ">
           <div className="profile">
-            <img src="../Frame 227.png" alt="" className="rounded-full h-[8em] w-[8em]"/>
+            <img src={`https://${fetchURI?.properties?.image?.description}.ipfs.nftstorage.link`} alt="" className="rounded-full h-[8em] w-[8em]"/>
           </div>
           <div className="text flex flex-col ml-4">
-            <h1 className="text-[1.5em]">{productValues.name}</h1>
+            <h1 className="text-[1.5em]">{fetchURI?.title}</h1>
             <p className="text-[0.8em]">
-              <span className="text-green-700">{productValues.expectedReturns}</span> in {productValues.farmingCycleType}
+              <span className="text-green-700">{Number((data as unknown[])?.[3])}%</span> in {Math.floor(diffInMonths)} months
             </p>
             <div className="justify-between mt-5 flex">
               <p className="text-left">
-                500 USDT <br />
+                1 USDT <br />
                 per units
               </p>
               <p className="text-left">
-                1000
+                {Number((data as unknown[])?.[9])}
                 <br />
                 investors
               </p>
@@ -50,7 +63,7 @@ const Product = ({ onInvest }: ProductProps) => {
           <div className="button ml-[3em]">
             <button
               className="bg-[#F18500] px-4 py-2 rounded-xl"
-              onClick={handleInvest}
+              onClick={invest}
             >
               Invest
             </button>
@@ -60,39 +73,39 @@ const Product = ({ onInvest }: ProductProps) => {
         <div className="grid grid-cols-2 gap-4 w-[80%] mt-8 m-auto justify-between text-white">
           <div className="rounded-lg border border-orange-400 w-[70%] p-1 flex flex-col">
             <h1>Expected Returns</h1>
-            <p>{productValues.expectedReturns} in 6 months</p>
+            <p>{Number((data as unknown[])?.[3])}% in {Math.floor(diffInMonths)} months</p>
           </div>
           <div className="rounded-lg border border-orange-400 w-[70%] p-1 flex flex-col">
             <h1>Investment Type</h1>
-            <p>{productValues.investmentType}</p>
+            <p>Fixed Income</p>
           </div>
           <div className="rounded-lg border border-orange-400 w-[70%] p-1 flex flex-col">
-            <h1>Offer Closing Date</h1>
-            <p>{productValues.offerClosingDate}</p>
+            <h1>Offer Starting Date</h1>
+            <p>{Number((data as unknown[])?.[7]) === 0 ? "Not Started" : date}</p>
           </div>
           <div className="rounded-lg border border-orange-400 w-[70%] p-1 flex flex-col">
             <h1>Maturity Date</h1>
-            <p>{productValues.maturityDate}</p>
+            <p>{Math.floor(diffInMonths)} months </p>
           </div>
           <div className="rounded-lg border border-orange-400 w-[70%] p-1 flex flex-col">
             <h1>Pay-Out Type</h1>
-            <p>{productValues.payoutType}</p>
+            <p>Capital & profit is paid at maturity</p>
           </div>
           <div className="rounded-lg border border-orange-400 w-[70%] p-1 flex flex-col">
             <h1>Unit Type</h1>
-            <p>{productValues.unitType}</p>
+            <p>Unit can be sold any time provided investment has not started and not sold out</p>
           </div>
           <div className="rounded-lg border border-orange-400 w-[70%] p-1 flex flex-col">
             <h1>Insurance Partner</h1>
-            <p>{productValues.insurancePartner}</p>
+            <p>Leadway insurance</p>
           </div>
           <div className="rounded-lg border border-orange-400 w-[70%] p-1 flex flex-col">
             <h1>Farming/Production Cycle Type</h1>
-            <p>{productValues.farmingCycleType}</p>
+            <p>{Math.floor(diffInMonths)} months</p>
           </div>
           <div className="rounded-lg border border-orange-400 w-[70%] p-1 flex flex-col">
             <h1>Farm Location</h1>
-            <p>{productValues.farmLocation}</p>
+            <p>{fetchURI?.properties?.farm?.description}</p>
           </div>
         </div>
       </div>

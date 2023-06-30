@@ -23,7 +23,10 @@ type ProductData = {
 const BuyInvestment = () => {
   const [showReview, setShowReview] = useState(false);
   const [showSubmit, setShowSubmit] = useState(false);
+  // const [showSubmit, setShowSubmit] = useState(false);
   const [price, setPrice] = useState<number | undefined>(undefined);
+  console.log('val',price);
+  
   const [submittedProduct, setSubmittedProduct] = useState<ProductData | null>(null);
 
   const handleInvest = (product: ProductData) => {
@@ -31,9 +34,6 @@ const BuyInvestment = () => {
     setSubmittedProduct(product);
   };
 
-//   console.log('price: ',price)
-//   console.log('sibmitted product',submittedProduct)
-//   console.log(price)
 
 const handleContinue = (investedPrice: number | undefined) => {
     setShowSubmit(true);
@@ -59,7 +59,7 @@ const handleContinue = (investedPrice: number | undefined) => {
         <p className="font-bold text-[1.3em] ml-3">Back</p>
       </div>
 
-      {!showReview && !showSubmit && <Product onInvest={handleInvest} />}
+      {!showReview && !showSubmit && <Product invest={()=>setShowReview(true)}/>}
       {showReview && !showSubmit && <Review onBack={handleContinue} price={price} />}
       {!showReview && showSubmit && <Submit product={submittedProduct} investedPrice={price} />}
     </div>
