@@ -54,6 +54,7 @@ export default function MyInvestment() {
           {combinedData.map((values, index:Number) => {
             return (
               <SingleActiveInvestment
+              key={index}
                 idx={index}
                 amInvested={Number(values[2])}
                 time={Number(values[3])}

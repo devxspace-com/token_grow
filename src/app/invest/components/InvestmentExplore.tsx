@@ -32,7 +32,7 @@ export default function InvestmentExplore() {
             return (
           
               
-              <SingleExplore id={Number(values[0])} percent={Number(values[2])} time={Number(values[6])} tokenId={Number(values[1])} uriId={Number(values[0])} investor={Number(values[5])} />
+              <SingleExplore key={Number(values[0])} id={Number(values[0])} percent={Number(values[2])} time={Number(values[6])} tokenId={Number(values[1])} uriId={Number(values[0])} investor={Number(values[5])} />
              
     
             
