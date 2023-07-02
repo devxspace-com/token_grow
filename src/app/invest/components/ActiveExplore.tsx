@@ -1,10 +1,8 @@
 "use client"
-import { useEffect } from "react";
-import useFetchURiDetails from "../hooks/useFetchURiDetails";
+
 import useGetInvestment from "../hooks/useGetInvestment";
-import useReadUri from "../hooks/useReadUri";
 import SingleExplore from "./SingleExplore";
-import { Skeleton } from "antd";
+
 
 
 export default function ActiveExplore() {
@@ -19,7 +17,7 @@ const combinedData: unknown[][] = (data as unknown[][])?.[0]?.map((_, index) =>
   (data as unknown[][]).map((arr) => arr[index])
 ) || [];
 
-  console.log('combinedData: ', combinedData)
+
   
   return(
     
@@ -43,7 +41,7 @@ const combinedData: unknown[][] = (data as unknown[][])?.[0]?.map((_, index) =>
 
           {
             
-            combinedData.map((values:any, index:Number)=> {
+            combinedData.slice(0, 2).map((values:any, index:Number)=> {
     
             return (
           

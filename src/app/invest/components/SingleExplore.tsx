@@ -33,7 +33,7 @@ export default function SingleExplore(props:any) {
   
   return (
     <section key={props.id} className="w-[100%]">
-        <div className="py-[32px] pl-[20px] flex gap-[36px] bg-[#FFFFFF] rounded-xl w-[50%] mb-[8px]">
+        <div className="py-[32px] pl-[20px] flex gap-[36px] bg-[#FFFFFF] rounded-xl w-[50%] lgDesktop:w-[60%] smDesktop:w-[78%] smDesk:w-[90%] tabletAir:w-[100%] tabletAir:pr-5 mb-[8px]">
             <div className="">
 
         {isLoading ?

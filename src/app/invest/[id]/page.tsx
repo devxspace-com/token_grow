@@ -63,7 +63,7 @@ const handleContinue = (investedPrice: number | undefined) => {
     <Layout>
     <div className="p-2 w-full flex flex-col">
       {
-        showLink ? <Link href="/invest" >
+        showLink ? <Link href="/invest/explore" >
         <div className="cursor-pointer flex ml-10">
         <img src="../icon/back.svg" alt="back" />
         <p className="font-bold text-[1.3em] ml-3">Back</p>
