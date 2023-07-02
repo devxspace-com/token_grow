@@ -119,7 +119,7 @@ const Submit = ({ product, investedPrice }: SubmitProps) => {
               Confirm
             </button>
             :
-            <button onClick={handleSubmit} className="bg-[#F18500]  px-4 py-1 flex flex-grow rounded-xl">
+            <button onClick={handleSubmit} className="ml-[190px] bg-[#F18500]  px-4 py-1 flex flex-grow rounded-xl">
               Approve
             </button>
           }
