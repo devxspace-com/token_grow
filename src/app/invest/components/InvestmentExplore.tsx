@@ -27,7 +27,7 @@ export default function InvestmentExplore() {
 
           {
             
-            combinedData.map((values:any, index:Number)=> {
+            combinedData.map((values:any)=> {
     
             return (
           

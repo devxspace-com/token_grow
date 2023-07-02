@@ -51,7 +51,7 @@ export default function MyInvestment() {
             <Skeleton active paragraph={{ rows: 4 }} title={false} />
           </div> */}
 
-          {combinedData.map((values, index) => {
+          {combinedData.map((values, index:Number) => {
             return (
               <SingleActiveInvestment
                 idx={index}

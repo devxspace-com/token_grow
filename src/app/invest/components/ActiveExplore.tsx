@@ -41,7 +41,7 @@ const combinedData: unknown[][] = (data as unknown[][])?.[0]?.map((_, index) =>
 
           {
             
-            combinedData.slice(0, 2).map((values:any, index:Number)=> {
+            combinedData.slice(0, 2).map((values:any)=> {
     
             return (
           
