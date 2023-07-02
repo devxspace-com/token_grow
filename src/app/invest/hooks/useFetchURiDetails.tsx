@@ -7,8 +7,9 @@ const getData = async ()=>{
     return await axios.get(API).then((res)=>res.data);
 }
 
+const stringifiedUri = String(uri);
 
-const {data, isLoading, isError} = useQuery(['URID', uri], getData)
+const {data, isLoading, isError} = useQuery(['URID', stringifiedUri], getData)
 
 return {data, isLoading, isError}
 }

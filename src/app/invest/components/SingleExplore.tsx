@@ -1,6 +1,7 @@
 import Link from "next/link";
 import useReadUri from "../hooks/useReadUri";
 import useFetchURiDetails from "../hooks/useFetchURiDetails";
+import { Skeleton } from "antd";
 
 
 export default function SingleExplore(props:any) {
@@ -31,13 +32,20 @@ export default function SingleExplore(props:any) {
   
   
   return (
-    <section key={props.id}>
+    <section key={props.id} className="w-[100%]">
         <div className="py-[32px] pl-[20px] flex gap-[36px] bg-[#FFFFFF] rounded-xl w-[50%] mb-[8px]">
+            <div className="">
+
+        {isLoading ?
+        <Skeleton.Image active />
+        :
+        <img src={`https://${fetchD?.properties?.image?.description}.ipfs.nftstorage.link`} alt={fetchD?.title} className="w-[200px] h-[200px] rounded-xl" />
         
-            <img src={props.im} alt="item name" className="w-[200px] h-[200px] rounded-xl" />
+        }
+            </div>
 
             <div className="flex flex-col">
-                <h2 className="text-[20px] leading-7 tracking-[0.03em] font-semibold">{fetchD?.title}</h2>
+                <h2 className="text-[20px] leading-7 tracking-[0.03em] font-semibold">{isLoading ?"Loading..." : fetchD?.title}</h2>
                 <p className="text-[12px] font-[400] leading-4 tracking-[0.03em]">
                     <span className="text-[#8acf8a]">{props.percent}%</span> returns in {Math.floor(diffInMonths)} months
                 </p>

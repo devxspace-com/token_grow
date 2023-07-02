@@ -17,11 +17,6 @@ export default function Invest() {
         </div>
       </div>
       <ConnectBtn/>
-
-  {/* <div className='flex'>
-      <Invest3 />
-
-    </div> */}
     </div>
   <ActiveInvestment/>
     </Layout>
