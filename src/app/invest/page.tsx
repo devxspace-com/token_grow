@@ -2,8 +2,9 @@ import Layout from '@/components/Layout'
 import React from 'react'
 import search from '../../../public/icon/search.svg'
 import Image from 'next/image'
-import Invest3 from './features/invest3'
+// import Invest3 from './buyInvestment/page'
 import ActiveInvestment from './features/ActiveInvestment'
+import ConnectBtn from '@/components/ConnectBtn'
 
 export default function Invest() {
   return (
@@ -15,11 +16,7 @@ export default function Invest() {
         <Image src={search} alt='' className='absolute bottom-[25%] w-[1.5rem]' />
         </div>
       </div>
-
-  <div className='flex'>
-      <Invest3 />
-
-    </div>
+      <ConnectBtn/>
     </div>
   <ActiveInvestment/>
     </Layout>

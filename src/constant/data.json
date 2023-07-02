@@ -1,0 +1,24 @@
+{
+    "title": "Sugar Processing Investment",
+    "type": "object",
+    "properties": {
+        
+        "description": {
+            "type": "string",
+            "description": "Capital and Profit is paid at maturity"
+        },
+        "farm":{
+            "type": "string",
+            "description": "Akure, Ondo State"
+        },
+        "image": {
+            "type": "string",
+            "description": "bafkreid7mec4jrcbh3sboddcagfccumqxa4abk2p2h2igajtf3r7rximee"
+        },
+    
+        "insurance": {
+            "type": "string",
+            "description": "Leadway insurance"
+        }
+    }
+}
