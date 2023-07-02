@@ -1,14 +1,14 @@
 /** @format */
 
-export const TokenGrowAddr = "0x4af5a075f16b75fadb288e6153d602e9d606901d";
+export const TokenGrowAddr = "0x9fa12a7729964B15B3D5971bC87b758598e176f9";
 
-export const NFTAddr = "0x96766299D396CAe2b7f289f64908c85E81B2928b";
+export const NFTAddr = "0xfb6948aBa275D242a8247dCb4B96181ceE016768";
 
-export const Token = "0xd415Dd020231345748f8D7699E34DF48bf263D2D";
+export const Token = "0x929c485acdca59c805e9f76f715b04c5b6a29e92";
 
 
-// Test Token: 0xba6844763ebc367b9867f744be024a857bc3658a
+// Test Token: 0x929c485acdca59c805e9f76f715b04c5b6a29e92
 
-// NFT Token:0x96766299D396CAe2b7f289f64908c85E81B2928b
+// NFT Token:0xfb6948aBa275D242a8247dCb4B96181ceE016768
 
-// TokenGrow: 0x7d23ad726af604de5bd9cd2fba9030f6a45185b6
+// TokenGrow: 0x7050dC062b9387A0764FB54eB1A7C4eC81C62371

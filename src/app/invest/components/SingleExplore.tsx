@@ -1,6 +1,7 @@
 import Link from "next/link";
 import useReadUri from "../hooks/useReadUri";
 import useFetchURiDetails from "../hooks/useFetchURiDetails";
+import { Skeleton } from "antd";
 
 
 export default function SingleExplore(props:any) {
@@ -14,22 +15,37 @@ export default function SingleExplore(props:any) {
   const diffInMonths = (timestamp - currentDate.getTime()) / (1000 * 60 * 60 * 24 * 30);
 
   const {data} = useReadUri(props.tokenId)
+
+  
+  console.log('dataArray','dataArray');
+  console.log('props.tokenId',props.tokenId);
+  console.log('data',data);
+  
   const {data:fetchD, isLoading, isError} = useFetchURiDetails(data as string);
 
-  console.log(fetchD);
-  console.log('prop', fetchD?.properties?.image?.description);
+  console.log('fetchD',fetchD);
+//   console.log('prop', fetchD?.properties?.image?.description);
+  
+  console.log('uri',data);
   
  
   
   
   return (
-    <section key={props.id}>
+    <section key={props.id} className="w-[100%]">
         <div className="py-[32px] pl-[20px] flex gap-[36px] bg-[#FFFFFF] rounded-xl w-[50%] mb-[8px]">
+            <div className="">
+
+        {isLoading ?
+        <Skeleton.Image active />
+        :
+        <img src={`https://${fetchD?.properties?.image?.description}.ipfs.nftstorage.link`} alt={fetchD?.title} className="w-[200px] h-[200px] rounded-xl" />
         
-            <img src={`https://${fetchD?.properties?.image?.description}.ipfs.nftstorage.link`} alt="item name" className="w-[200px] h-[200px] rounded-xl" />
+        }
+            </div>
 
             <div className="flex flex-col">
-                <h2 className="text-[20px] leading-7 tracking-[0.03em] font-semibold">{fetchD?.title}</h2>
+                <h2 className="text-[20px] leading-7 tracking-[0.03em] font-semibold">{isLoading ?"Loading..." : fetchD?.title}</h2>
                 <p className="text-[12px] font-[400] leading-4 tracking-[0.03em]">
                     <span className="text-[#8acf8a]">{props.percent}%</span> returns in {Math.floor(diffInMonths)} months
                 </p>
@@ -40,7 +56,7 @@ export default function SingleExplore(props:any) {
                         <p className="text-[12px] leading-4 tracking-[0.03em] mt-[4px]">per units</p>
                     </div>
                     <div className="">
-                        <h2 className="text-[16px] font-[400] leading-6 tracking-[0.03em]">1000</h2>
+                        <h2 className="text-[16px] font-[400] leading-6 tracking-[0.03em]">{props.investor}</h2>
                         <p className="text-[12px] leading-4 tracking-[0.03em] mt-[4px]">Investors</p>
                     </div>
                    
