@@ -49,7 +49,7 @@ export default function Sidebar() {
 
   return (
     <main className="">
-      <div className="h-full min-h-screen max-h-[100%]  bg-[#000019] pl-[70px]">
+      <div className="h-full min-h-screen max-h-[100%]  bg-[#000019] pl-[70px] smDesk:pl-[35px]">
         <div className="pt-[40px] mb-[100px]">
           <Link
             href="/dashboard"

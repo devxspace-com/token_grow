@@ -5,6 +5,8 @@ import tokenGrow from '../../../abi/tokenGrow.json'
 import token from '../../../abi/token.json'
 import { useParams } from 'next/navigation';
 import useGetSingleInvestment from '../hooks/useGetSingleInvestment';
+import useFetchURiDetails from '../hooks/useFetchURiDetails';
+import useReadUri from '../hooks/useReadUri';
 
 type SubmitProps = {
   product: {
@@ -27,7 +29,12 @@ const Submit = ({ product, investedPrice }: SubmitProps) => {
   const {address} = useAccount();
   const {id} = useParams();
   const {data, isLoading, isError} = useGetSingleInvestment(Number(id));
-  console.log('ddd',data);
+  const {data:readuri} = useReadUri(Number((data as unknown[])?.[2]))
+  const {data:fetchD} = useFetchURiDetails(String(readuri));
+  console.log('fetchD',fetchD);
+  console.log('dataddddd',data);
+  
+
   
   // Calculate the units and service fee
   const units = investedPrice ? Math.floor(investedPrice / 1) : 0;
@@ -38,7 +45,10 @@ const Submit = ({ product, investedPrice }: SubmitProps) => {
     address:TokenGrowAddr,
     abi:tokenGrow,
     functionName: 'buyAnInvestment',
-    args: [amount, Number((data as unknown [])?.[1]),address]
+    args: [amount, Number((data as unknown [])?.[1]),address],
+    onSuccess(data) {
+      window.location.replace('http://localhost:3000/invest');
+    }
   })
   const {write:ApproveT} =useContractWrite({
     address:Token,
@@ -54,7 +64,11 @@ const Submit = ({ product, investedPrice }: SubmitProps) => {
   })
 
   // console.log("read",Number(readAllow));
-  
+  const epochTime = Number((data as unknown[])?.[8]);
+
+const currentDate = new Date();
+const timestamp = (epochTime as number) * 1000; // Cast 'time' to 'number'
+const diffInMonths = ( timestamp - currentDate.getTime()) / (1000 * 60 * 60 * 24 * 30);
 
   const handleSubmit = ()=>{
     if( Number(readAllow) >= amount){
@@ -77,14 +91,12 @@ const Submit = ({ product, investedPrice }: SubmitProps) => {
         <div className="flex flex-col text-white w-[50%] mr-[10%]">
           <div className="flex flex-col w-full ">
             <h1 className="text-[20px] leading-6 font-medium tracking-[0.26px]">
-              {/* {product.name} */}
-              Garri Processing Investment
+              {fetchD?.title}
             </h1>
             <p className="text-[12px] font-normal leading-4 tracking-[0.156px]">
               <span className="text-green-700">
-                {/* {product.expectedReturns} */}20%
-                </span> returns in 
-              {/* {product.farmingCycleType} */} 6 months
+               {Number((data as unknown[])?.[3])}%
+                </span> returns in {Math.floor(diffInMonths)} months
             </p>
           </div>
 

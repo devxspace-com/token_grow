@@ -24,7 +24,7 @@ export default function AllNotifications() {
         {
             details.map((detail, index)=>(
 
-                <SingleNotification id={index} title={detail.title} details={detail.details} date={detail.date}/>
+                <SingleNotification key={index} id={index} title={detail.title} details={detail.details} date={detail.date}/>
             ))
         }
     </div>

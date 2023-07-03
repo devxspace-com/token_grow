@@ -10,7 +10,7 @@ export default function ServicesFeatures() {
                 <div className="w-[200px] bg-[#FFFFFF] rounded-lg pt-[70px] tabletAir:w-[300px] mobile:w-[90%] mobile:mx-auto">
                    
 
-                    <img src="./icon/Vector1.png" alt="" className='w-[48px] h-[48px] mx-auto ' />
+                    <img src="../icon/Vector1.png" alt="" className='w-[48px] h-[48px] mx-auto ' />
 
                     <p className="font-[400] mt-[44px] text-[16px] leading-[21px] text-center tracking-[0.03em] pb-[13px] w-[90%] mx-auto">We locate Agricultural investments all around the globe</p>
                   
@@ -18,7 +18,7 @@ export default function ServicesFeatures() {
                 <div className="w-[200px] mt-[20px] bg-[#FFFFFF] rounded-lg pt-[70px] tabletAir:w-[300px] mobile:w-[90%] mobile:mx-auto">
                    
 
-                    <img src="./icon/arcticons_invest.png" alt="" className='w-[48px] h-[48px] mx-auto ' />
+                    <img src="../icon/arcticons_invest.png" alt="" className='w-[48px] h-[48px] mx-auto ' />
 
                     <p className="font-[400] mt-[44px] text-[16px] leading-[21px] text-center tracking-[0.03em] pb-[13px] w-[90%] mx-auto">we make the investments accessile to investors on our platform.</p>
                   
@@ -26,7 +26,7 @@ export default function ServicesFeatures() {
                 <div className="w-[200px] tabletAir:w-[300px] tabletAir:mt-[20px] bg-[#FFFFFF] rounded-lg pt-[70px] mobile:w-[90%] mobile:mx-auto">
                    
 
-                    <img src="./icon/Group.png" alt="" className='w-[48px] h-[48px] mx-auto ' />
+                    <img src="../icon/Group.png" alt="" className='w-[48px] h-[48px] mx-auto ' />
 
                     <p className="font-[400] text-[16px] leading-[21px] text-center mt-[44px] tracking-[0.03em] pb-[13px] w-[90%] mx-auto">With the power of our communities funding capacity</p>
                   
@@ -34,7 +34,7 @@ export default function ServicesFeatures() {
                 <div className="w-[200px] tabletAir:w-[300px] mt-[20px] tabletAir:mt-[40px] bg-[#FFFFFF] rounded-lg pt-[70px] mobile:w-[90%] mobile:mx-auto">
                    
 
-                    <img src="./icon/arcticons_money-manager.png" alt="" className='w-[48px] h-[48px] mx-auto ' />
+                    <img src="../icon/arcticons_money-manager.png" alt="" className='w-[48px] h-[48px] mx-auto ' />
 
                     <p className="font-[400] text-[16px] leading-[21px] text-center mt-[44px] tracking-[0.03em] pb-[13px] w-[90%] mx-auto">We manage the distribution of profit of participating investors</p>
                   
