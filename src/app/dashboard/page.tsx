@@ -5,7 +5,6 @@ import Layout from '@/components/Layout';
 import Barchar from './components/chart'
 import PieChart from './components/pie';
 import Linegraph from './components/Line';
-import ConnectBtn from '@/components/ConnectBtn';
 import { useAccount, useContractRead, useContractReads } from "wagmi";
 import tokenabi from '../../abi/token.json';
 import tokenGrow from '../../abi/tokenGrow.json';
@@ -101,7 +100,6 @@ useEffect(() => {
   return (
    <Layout>
      <div className='w-100% flex'> 
-     <ConnectBtn />
           <div className='w-[420px] h-[160px] mt-[104px] ml-[50px] rounded-[12px] text-center border-[#00004C] border-2'>
             USDT balance : ${(Number(USdtBalance))/1e18} 
           </div>
