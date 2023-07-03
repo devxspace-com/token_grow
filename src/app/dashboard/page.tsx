@@ -83,10 +83,10 @@ useEffect(() => {
    <Layout>
      <div className='w-100% flex'> 
           <div className='w-[420px] h-[160px] mt-[104px] ml-[50px] rounded-[12px] text-center border-[#00004C] border-2'>
-            USDT balance : ${(Number(USdtBalance))/1e18} 
+            USDT balance : ${((Number(USdtBalance))/1e18).toFixed(2)} 
           </div>
           <div className="h-[160px] w-[310px] ml-[100px] mt-[104px] rounded-[12px] text-center border-[#00004C] border-2 "> 
-            Total Invested : ${totalInvested}
+            Total Invested : ${((Number(totalInvested))/1e18).toFixed(2)}
           </div>
 
           <div className='w-[250px] h-[235px] mt-[104px] mx-[100px] rounded-[12px] text-center border-[#00004C] border-2'>
