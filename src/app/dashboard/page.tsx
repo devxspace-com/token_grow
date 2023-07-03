@@ -1,14 +1,48 @@
 'use client';
-import {ReactNode, useState} from 'react';
+import {ReactNode, useState, useEffect} from 'react';
 import Sidebar from '@/components/Sidebar'
 import Layout from '@/components/Layout';
 import Barchar from './components/chart'
 import PieChart from './components/pie';
 import Linegraph from './components/Line';
+import ConnectBtn from '@/components/ConnectBtn';
+import { useAccount, useContractRead, useContractReads } from "wagmi";
+import tokenabi from '../../abi/token.json';
+import tokenGrowABI from '../../abi/tokenGrow.json';
+
 
 
 
 export default function DashboardLayout() {
+  const {address} = useAccount();
+  
+  const TokenContract = {
+    address: '0x929c485acdca59c805e9f76f715b04c5b6a29e92',
+    abi: tokenabi,
+  }
+  const TokenGrowContract = {
+    address: '0x9fa12a7729964B15B3D5971bC87b758598e176f9',
+    abi: tokenGrowABI,
+  }
+   
+  const { data, isError, isLoading }= useContractReads({
+    contracts: [
+      {
+        ...TokenContract,
+        functionName: 'balanceOf',
+       //@ts-ignore
+        args: [address],
+      }, 
+      {
+        ...TokenGrowContract,
+        functionName: 'getYourInvestment',
+         //@ts-ignore
+        args: [address],
+      },
+   
+    ],
+  })
+
   const [overview, setOverview] = useState(true);
   const [portfolio, setPortfolio] = useState(false)
 const barstyle = {
@@ -24,10 +58,17 @@ const portfolioClick = () =>{
   setPortfolio(true);
 }
 
+useEffect(() => {
+     if(data){
+      console.log(data);
+     }
+}, [data])
+
 
   return (
    <Layout>
      <div className='w-100% flex'> 
+     <ConnectBtn />
           <div className='w-[420px] h-[160px] mt-[104px] ml-[50px] rounded-[12px] text-center border-[#00004C] border-2'>
              Total balance 
           </div>
