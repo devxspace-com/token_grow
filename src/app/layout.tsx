@@ -11,39 +11,7 @@ import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { fantomTestnet, fantom } from 'wagmi/chains';
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { QueryClient, QueryClientProvider } from 'react-query';
-// import { alchemyProvider } from 'wagmi/providers/alchemy';
-// import { publicProvider } from 'wagmi/providers/public';
 
-// import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
-// import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-// import { Chain } from 'wagmi/chains';
-// import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
-
-// const HederaChain: Chain = {
-//   id: 0x12a,
-//   name: 'Hedera Testnet',
-//   network: 'Hedra',
-//   iconUrl: 'https://example.com/icon.svg',
-//   iconBackground: '#fff',
-//   nativeCurrency: {
-//     decimals: 18,
-//     name: 'HBAR',
-//     symbol: 'HBAR',
-//   },
-//   rpcUrls: {
-//     default: {
-//       http: [""],
-//     },
-//   },
-//   // blockExplorers: {
-//   //   default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
-//   //   etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' },
-//   // },
-//   testnet: true,
-// };
-// https://ftm.getblock.io/&lt;api_key&gt;/testnet/
-
-// PK411C6A5QX7VP2DFT5JHVMEHR7XR7IWG6 API key for testnet
 
 const { chains, publicClient } = configureChains(
   [ fantomTestnet],
@@ -87,7 +55,7 @@ export default function RootLayout({
 
       <body className={inter.className}>
          <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider chains={chains} coolMode>
         <QueryClientProvider client={client}>
 
         {children}
