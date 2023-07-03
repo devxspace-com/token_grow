@@ -5,11 +5,11 @@ import Layout from '@/components/Layout';
 import Barchar from './components/chart'
 import PieChart from './components/pie';
 import Linegraph from './components/Line';
-import { useAccount, useContractRead, useContractReads } from "wagmi";
+import { useAccount, useContractRead } from "wagmi";
 import tokenabi from '../../abi/token.json';
 import tokenGrow from '../../abi/tokenGrow.json';
 import Investedcard from './components/investedCard';
-import { Index } from 'viem/dist/types/types/rpc';
+import {TokenGrowAddr, NFTAddr, Token} from '../../constant/contract';
 
 
 
@@ -18,31 +18,19 @@ export default function DashboardLayout() {
   const [USdtBalance, setUsdtBalance] = useState('');
   const [totalInvested, setTotalinvestment] = useState("");
   
-  const TokenContract = {
-    address: '0x929c485acdca59c805e9f76f715b04c5b6a29e92',
+
+  const { data:usdtBalance } = useContractRead({
+    address: Token,
     abi: tokenabi,
-  }
-  const TokenGrowContract = {
-    address: '0x9fa12a7729964B15B3D5971bC87b758598e176f9',
+    functionName: 'balanceOf',
+    args: [address]
+  })
+
+  const { data:investDetails} = useContractRead({
+    address: TokenGrowAddr,
     abi: tokenGrow,
-  }
-   
-  const { data, isError, isLoading }= useContractReads({
-    contracts: [
-      {
-        ...TokenContract,
-        functionName: 'balanceOf',
-       //@ts-ignore
-        args: [address],
-      }, 
-      {
-        ...TokenGrowContract,
-        functionName: 'getYourInvestment',
-         //@ts-ignore
-        args: [address],
-      },
-   
-    ],
+    functionName: 'getYourInvestment',
+    args: [address]
   })
 
   const [overview, setOverview] = useState(true);
@@ -60,41 +48,35 @@ const portfolioClick = () =>{
   setPortfolio(true);
 }
 
-const combinedData: unknown[][] =
-(data as any[])[1].result[2].map((_ : any, index : any) =>
-  (data as any[]).map((arr :any) => arr[index])
-) || [];
-console.log(combinedData);
-// const combinedData: unknown[][] =
-//     (activeIV as unknown[][])?.[0]?.map((_, index) =>
-//       (activeIV as unknown[][]).map((arr) => arr[index])
-//     ) || [];
 
+const combinedData: unknown[][] =
+    (investDetails as unknown[][])?.[2]?.map((_, index) =>
+      (investDetails as unknown[][]).map((arr) => arr[index])
+    ) || [];
+
+    console.log(combinedData);
 
 useEffect(() => {
-  let amountArray : any | [];
+  let investedDet: any[];
   let usdtinvstArray : any | [];   
   let totalInvestment : any = 0;
-  if(data){
-    // console.log(data[1].result[2]);
-    setUsdtBalance(String((data[0].result))); 
-    amountArray = (data[1].result);
+  if(usdtBalance){
+    setUsdtBalance(String(usdtBalance));
+    //@ts-ignore
+    investedDet = investDetails[2];
+    console.log(investedDet);
     let i : any;
-    for(i=0; i<amountArray[2].length; i++){
-      let value = Number(amountArray[2][i])
+    for(i=0; i<investedDet.length; i++){
+      let value = Number(investedDet[i])
+      console.log(value);
       totalInvestment += value;
     }
     setTotalinvestment(totalInvestment);
-  
-    // usdtinvstArray = (data[1].result);
-    // for(i=0; i<=amountArray[0].length; i++){
-    //   console.log("yes")
-    //   setinvestedProduct([...investedProduct, Number(usdtinvstArray[2][i])])
-    //   console.log(Number(usdtinvstArray[2][i]))
-    //   // setProductNFTID([...ProductNFTID, Number(usdtinvstArray[1][i])]);
-    // }
      }
-}, [data])
+
+
+    
+}, [usdtBalance])
 
 
   return (
@@ -128,9 +110,12 @@ useEffect(() => {
      <div className="flex h-[700px] w-[1180px] ml-[50px] mt-[20px] mb-[100px] rounded-[12px] bg-[#00004C]">
          {overview && <div className="flex">
          <div className="h-[480px] w-[250px] mt-[20px] ml-[20px] space-y-4"> 
-      {combinedData.map((item : any, index : Number) => (
-          <Investedcard key={index} logo='../icon/ether.png' investedAmount={item} />          
+         <h2 className='text-white'>investment</h2>
+         <div className='overflow-y-scroll max-h-[70vh] scrollbar-hide overflow-clip space-y-4'>
+      {combinedData.map((item : any, index : any) => (
+          <Investedcard key={index} nftID={Number(item[1])} logo='../icon/ether.png' investedAmount={Number(item[2])} />          
         ))}
+         </div>
       </div>
 
 
