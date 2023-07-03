@@ -7,8 +7,7 @@ import Link from "next/link";
 
 import { useState } from "react";
 // import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { Web3Provider } from "@ethersproject/providers";
-import walletConnectFcn from "@/hedera/walletConnect";
+
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
