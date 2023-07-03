@@ -3,6 +3,7 @@ import useReadUri from '../hooks/useReadUri';
 import { useAccount, useContractRead, useContractWrite } from 'wagmi';
 import { TokenGrowAddr } from '@/constant/contract';
 import tokenGrow from "../../../abi/tokenGrow.json";
+import { Skeleton } from 'antd';
 
 export default function SingleActiveInvestment(props:any) {
     const {address} = useAccount();
@@ -60,12 +61,13 @@ const {data:profTime} = useContractRead({
 
   return (
     <section key={props.idx}>
-        <section className="w-[90%] mx-auto bg-[#000019] rounded-lg text-[#FFFFFF] mb-[8px]">
+        
+        <section className="w-[90%] smDesktop:w-[100%] mx-auto bg-[#000019] rounded-lg text-[#FFFFFF] mb-[8px]">
 
-<div className="w-[98%] pt-[10px] pb-[10px] mx-auto flex justify-between items-center ">
+<div className="w-[98%] smDesktop:flex-wrap smDesk:flex-1 smDesk:flex-grow pt-[10px] pb-[10px] mx-auto flex justify-between items-center ">
 
         <div className="border-r-[1px] border-[#ccccff] pr-[8px]">
-            <h2 className="font-[400] text-[16px] leading-5 tracking-[0.03em]">{NFT?.title}</h2>
+            <h2 className="font-[400] text-[16px] leading-5 tracking-[0.03em]">{ nftLoad? "loading...": NFT?.title}</h2>
             <p className="text-[12px] font-[300] leading-4 tracking-[0.03em] mt-[8px]">Invested: {props.amInvested/1e18} USDT</p>
         </div>
         <div className="border-r-[1px] border-[#ccccff] pr-[8px]">

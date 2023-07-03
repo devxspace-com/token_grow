@@ -9,7 +9,7 @@ import ConnectBtn from '@/components/ConnectBtn'
 export default function Invest() {
   return (
     <Layout>
-    <div className='bg-[#CCCCFF] flex flex-col'>
+    {/* <div className='bg-[#CCCCFF] flex flex-col'>
        <div className="top p-10 items center m-auto flex">
         <div className='relative'>
         <input type="search" name="search" id="search" placeholder='search' className='rounded-xl px-8 w-[400px] py-2' />
@@ -17,13 +17,11 @@ export default function Invest() {
         </div>
       </div>
       <ConnectBtn/>
-
-  {/* <div className='flex'>
-      <Invest3 />
-
     </div> */}
-    </div>
+    <div className="mt-8">
+
   <ActiveInvestment/>
+    </div>
     </Layout>
   )
 }
