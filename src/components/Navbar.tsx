@@ -36,12 +36,7 @@ export default function Navbar() {
               >
                 Impact
               </Link>
-              <Link
-                href=""
-                className="font-[600] text-[16px] leading-5 tracking-[0.013em] text-[#FFFFFF] hover:text-[#F18500] "
-              >
-                Hashgraph
-              </Link>
+             
               <Link
                 href=""
                 className="font-[600] text-[16px] leading-5 tracking-[0.013em] text-[#FFFFFF] hover:text-[#F18500] "
@@ -80,12 +75,7 @@ export default function Navbar() {
           >
             Impact
           </Link>
-          <Link
-            href=""
-            className="font-[600] text-[16px] leading-5 tracking-[0.013em] text-[#FFFFFF] hover:text-[#F18500] "
-          >
-            Hashgraph
-          </Link>
+          
           <Link
             href=""
             className="font-[600] text-[16px] leading-5 tracking-[0.013em] text-[#FFFFFF] hover:text-[#F18500] "

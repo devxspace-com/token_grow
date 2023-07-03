@@ -101,20 +101,20 @@ const date = new Date(Number((data as unknown[])?.[7]) * 1000).toLocaleDateStrin
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 w-[80%] mt-8 m-auto text-white">
-          <div className="rounded-lg border border-orange-400 flex flex-col w-[38%] px-4 py-1">
+        <div className="grid grid-cols-2 gap-6 w-[80%] lgDesktop:w-[90%] mt-8 m-auto text-white">
+          <div className="rounded-lg border border-orange-400 flex flex-col w-[38%] lgDesktop:w-[44%] smDesktop:w-[50%] px-4 py-1">
             <h1 className="font-[600] text-[12px] tracking-[0.156px] leading-4">Expected Returns</h1>
             <p className="text-[16px] font-normal leading-6 tracking-[0.208px]">{Number((data as unknown[])?.[3])}% in {Math.floor(diffInMonths)} months</p>
           </div>
-          <div className="rounded-lg border border-orange-400 w-[30%] flex flex-col px-4 py-1  -ml-[110px]">
+          <div className="rounded-lg border border-orange-400 w-[30%] lgDesktop:w-[35%] smDesktop:w-[45%] flex flex-col px-4 py-1  -ml-[110px]">
             <h1 className="font-[600] text-[12px] tracking-[0.156px] leading-4">Investment Type</h1>
             <p className="text-[16px] font-normal leading-6 tracking-[0.208px]">Fixed Income</p>
           </div>
-          <div className="rounded-lg border border-orange-400 w-[35%]  flex flex-col px-4 py-1 ">
+          <div className="rounded-lg border border-orange-400 w-[35%] lgDesktop:w-[45%]  flex flex-col px-4 py-1 ">
             <h1 className="font-[600] text-[12px] tracking-[0.156px] leading-4">Offer Starting Date</h1>
             <p className="text-[16px] font-normal leading-6 tracking-[0.208px]">{Number((data as unknown[])?.[7]) === 0 ? "Not Started" : date}</p>
           </div>
-          <div className="rounded-lg border border-orange-400 w-[35%]  flex flex-col px-4 py-1  -ml-[110px]">
+          <div className="rounded-lg border border-orange-400 w-[35%]  lgDesktop:w-[45%] flex flex-col px-4 py-1  -ml-[110px]">
             <h1 className="font-[600] text-[12px] tracking-[0.156px] leading-4">Maturity Date</h1>
             <p className="text-[16px] font-normal leading-6 tracking-[0.208px]">{Math.floor(diffInMonths)} months </p>
           </div>
