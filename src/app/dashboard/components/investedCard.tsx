@@ -15,7 +15,7 @@ const InvestedCard = (prop : any) => {
   <div className="h-[140px] w-[250px] mt-[4px] rounded-[16px] bg-white text-center">
       <div className="flex mx-[10px] pt-[20px] justify-between">
       <img src={`https://${readuri?.properties?.image?.description}.ipfs.nftstorage.link`} alt='Image' className='h-[50px] w-[50px] rounded-full'/>
-      <h1 className='font-[600] text-[23px] leading-[26px] mt-[15px]'>${prop.investedAmount}</h1>
+      <h1 className='font-[600] text-[23px] leading-[26px] mt-[15px]'>${prop.investedAmount/1e18}</h1>
       <div>
           <li className='h-[10px]'></li>
           <li className='h-[10px]'></li>
