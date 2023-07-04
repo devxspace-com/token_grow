@@ -47,7 +47,7 @@ const Submit = ({ product, investedPrice }: SubmitProps) => {
     functionName: 'buyAnInvestment',
     args: [amount, Number((data as unknown [])?.[1]),address],
     onSuccess(data) {
-      window.location.replace('http://localhost:3000/invest');
+      window.location.replace('https://token-grow-two.vercel.app/invest');
     }
   })
   const {write:ApproveT} =useContractWrite({
