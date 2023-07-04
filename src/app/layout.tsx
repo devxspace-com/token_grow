@@ -14,11 +14,11 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 
 const { chains, publicClient } = configureChains(
-  [ fantomTestnet],
+  [ fantom],
   [
     jsonRpcProvider({
       rpc: chain => ({ 
-        http: `https://ftm.getblock.io/ebd5c137-ed80-43e4-805b-cd805544ad07/testnet/`
+        http: `https://ftm.getblock.io/9e74fe6f-1592-4db1-adb4-384bc58269c1/mainnet/`
       })
     }),
   ]

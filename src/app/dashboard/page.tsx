@@ -1,14 +1,38 @@
 'use client';
-import {ReactNode, useState} from 'react';
+import {ReactNode, useState, useEffect} from 'react';
 import Sidebar from '@/components/Sidebar'
 import Layout from '@/components/Layout';
 import Barchar from './components/chart'
 import PieChart from './components/pie';
 import Linegraph from './components/Line';
+import { useAccount, useContractRead } from "wagmi";
+import tokenabi from '../../abi/token.json';
+import tokenGrow from '../../abi/tokenGrow.json';
+import Investedcard from './components/investedCard';
+import {TokenGrowAddr, NFTAddr, Token} from '../../constant/contract';
 
 
 
 export default function DashboardLayout() {
+  const {address} = useAccount();
+  const [USdtBalance, setUsdtBalance] = useState('');
+  const [totalInvested, setTotalinvestment] = useState("");
+  
+
+  const { data:usdtBalance } = useContractRead({
+    address: Token,
+    abi: tokenabi,
+    functionName: 'balanceOf',
+    args: [address]
+  })
+
+  const { data:investDetails} = useContractRead({
+    address: TokenGrowAddr,
+    abi: tokenGrow,
+    functionName: 'getYourInvestment',
+    args: [address]
+  })
+
   const [overview, setOverview] = useState(true);
   const [portfolio, setPortfolio] = useState(false)
 const barstyle = {
@@ -25,14 +49,44 @@ const portfolioClick = () =>{
 }
 
 
+const combinedData: unknown[][] =
+    (investDetails as unknown[][])?.[2]?.map((_, index) =>
+      (investDetails as unknown[][]).map((arr) => arr[index])
+    ) || [];
+
+    console.log(combinedData);
+
+useEffect(() => {
+  let investedDet: any[];
+  let usdtinvstArray : any | [];   
+  let totalInvestment : any = 0;
+  if(usdtBalance){
+    setUsdtBalance(String(usdtBalance));
+    //@ts-ignore
+    investedDet = investDetails[2];
+    console.log(investedDet);
+    let i : any;
+    for(i=0; i<investedDet.length; i++){
+      let value = Number(investedDet[i])
+      console.log(value);
+      totalInvestment += value;
+    }
+    setTotalinvestment(totalInvestment);
+     }
+
+
+    
+}, [usdtBalance])
+
+
   return (
    <Layout>
      <div className='w-100% flex'> 
           <div className='w-[420px] h-[160px] mt-[104px] ml-[50px] rounded-[12px] text-center border-[#00004C] border-2'>
-             Total balance 
+            USDT balance : ${((Number(USdtBalance))/1e18).toFixed(2)} 
           </div>
           <div className="h-[160px] w-[310px] ml-[100px] mt-[104px] rounded-[12px] text-center border-[#00004C] border-2 "> 
-          Total spent
+            Total Invested : ${((Number(totalInvested))/1e18).toFixed(2)}
           </div>
 
           <div className='w-[250px] h-[235px] mt-[104px] mx-[100px] rounded-[12px] text-center border-[#00004C] border-2'>
@@ -53,76 +107,19 @@ const portfolioClick = () =>{
         </div>
      </div>
 
-
-
      <div className="flex h-[700px] w-[1180px] ml-[50px] mt-[20px] mb-[100px] rounded-[12px] bg-[#00004C]">
          {overview && <div className="flex">
-          <div className="h-[480px] w-[250px] mt-[20px] ml-[20px] space-y-4"> 
-              <h2 className='text-white'>investment</h2>
-              <div className="h-[140px] w-[250px] mt-[4px] rounded-[16px] bg-white text-center">
-                  <div className="flex mx-[10px] pt-[20px] justify-between">
-                  <img src='../icon/ether.png' alt='etherImage' className='h-[50px] w-[50px]'/>
-                  <h1 className='font-[600] text-[23px] leading-[26px] mt-[15px]'>$20,000</h1>
-                  <div>
-                      <li className='h-[10px]'></li>
-                      <li className='h-[10px]'></li>
-                      <li className='h-[10px]'></li>
-                  </div>
-                  </div>
-                <div className="flex space-x-2 mx-[10px] mt-[20px]">
-                  <p className='text-[#D43D3D]'>-1.5%</p>
-                  <p>This Week</p>
-                </div>
-              </div>
+         <div className="h-[480px] w-[250px] mt-[20px] ml-[20px] space-y-4"> 
+         <h2 className='text-white'>investment</h2>
+         <div className='overflow-y-scroll max-h-[70vh] scrollbar-hide overflow-clip space-y-4'>
+      {combinedData.map((item : any, index : any) => (
+          <Investedcard key={index} nftID={Number(item[1])} logo='../icon/ether.png' investedAmount={Number(item[2])} />          
+        ))}
+         </div>
+      </div>
 
-               <div className="h-[140px] w-[250px] mt-[4px] rounded-[16px] bg-white text-center">
-                  <div className="flex mx-[10px] pt-[20px] justify-between">
-                  <img src='../icon/polygon.png' alt='etherImage' className='h-[50px] w-[50px]'/>
-                  <h1 className='font-[600] text-[23px] leading-[26px] mt-[15px]'>$18,000</h1>
-                  <div>
-                      <li className='h-[10px]'></li>
-                      <li className='h-[10px]'></li>
-                      <li className='h-[10px]'></li>
-                  </div>
-                  </div>
-                <div className="flex space-x-2 mx-[10px] mt-[20px]">
-                  <p className='text-[#77E56A]'>+15%</p>
-                  <p>This Week</p>
-                </div>
-              </div>
 
-               <div className="h-[140px] w-[250px] mt-[4px] rounded-[16px] bg-white text-center">
-                  <div className="flex mx-[10px] pt-[20px] justify-between">
-                  <img src='../icon/bitcoin.png' alt='etherImage' className='h-[50px] w-[50px]'/>
-                  <h1 className='font-[600] text-[23px] leading-[26px] mt-[15px]'>$12,000</h1>
-                  <div>
-                      <li className='h-[10px]'></li>
-                      <li className='h-[10px]'></li>
-                      <li className='h-[10px]'></li>
-                  </div>
-                  </div>
-                <div className="flex space-x-2 mx-[10px] mt-[20px]">
-                  <p className='text-[#77E56A]'>+15%</p>
-                  <p>This Week</p>
-                </div>
-              </div>
 
-               <div className="h-[140px] w-[250px] mt-[4px] rounded-[16px] bg-white text-center">
-                  <div className="flex mx-[10px] pt-[20px] justify-between">
-                  <img src='../icon/binance.png' alt='etherImage' className='h-[50px] w-[50px]'/>
-                  <h1 className='font-[600] text-[23px] leading-[26px] mt-[15px]'>$600</h1>
-                  <div>
-                      <li className='h-[10px]'></li>
-                      <li className='h-[10px]'></li>
-                      <li className='h-[10px]'></li>
-                  </div>
-                  </div>
-                <div className="flex space-x-2 mx-[10px] mt-[20px]">
-                  <p className='text-[#77E56A]'>+15%</p>
-                  <p>This Week</p>
-                </div>
-              </div>
-          </div>
           <div className="h-[550px] w-[800px] ml-[50px] mt-[20px] space-y-4">
           <h2 className="text-white ">Growth investment</h2>
           <div className="h-[550px] w-[800px] rounded-[12px] text-center bg-white">
